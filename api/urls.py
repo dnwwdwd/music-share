@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+
 urlpatterns = [
     path('api/singer/', views.singer_list),
     path('api/singer/add', views.singer_add),

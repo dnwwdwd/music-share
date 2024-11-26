@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from api.serializers import SingerSerializer
 from api.serializers import SingerVOSerializer, MusicVOSerializer, MusicSerializer, LoginSerializer, \
     RegisterSerializer, UserSerializer, UserUpdateSerializer, MusicStarVOSerializer
-from goods.models import Goods
 from music.models import Music
 from music_star.models import MusicStar
 from singer.models import Singer
@@ -41,7 +40,7 @@ def singer_add(request):
 def singer_detail(request, id):
     try:
         singer = Singer.objects.get(id=id)
-    except Goods.DoesNotExist:
+    except Singer.DoesNotExist:
         return Response({"code": 40000, "data": "", "message": ""})
     if request.method == 'GET':
         serializer = SingerVOSerializer(singer)
